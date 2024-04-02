@@ -428,6 +428,12 @@ config USB_NET_CDC_SUBSET
 	  commonly not being able to handle certain events (like replugging
 	  the host on the other end) very well.  Also, these devices will
 	  not generally have permanently assigned Ethernet addresses.
+	  
+config USB_NET_GOBI
+        tristate "Qualcomm Gobi"
+        depends on USB_USBNET
+        help
+          Choose this option if you have a Qualcomm Gobi 2000 cellular modem.
 
 config USB_ALI_M5632
 	bool "ALi M5632 based 'USB 2.0 Data Link' cables"
@@ -547,6 +553,20 @@ config USB_NET_QMI_WWAN
 
 	  To compile this driver as a module, choose M here: the
 	  module will be called qmi_wwan.
+
+config USB_NET_QMI_WWAN_F
+	tristate "QMI WWAN_F driver for Qualcomm MSM based 3G and LTE modems"
+	depends on USB_USBNET
+	select USB_WDM
+	help
+	  Support WWAN LTE/3G devices based on Qualcomm Mobile Data Modem
+
+config USB_NET_QMI_WWAN_Q
+	tristate "Qualcomm QMI WWAN aggration protocol"
+	depends on USB_USBNET
+	select USB_WDM
+	help
+	  Qualcomm private QMI WWAN aggration protocol.
 
 config USB_HSO
 	tristate "Option USB High Speed Mobile Devices"
